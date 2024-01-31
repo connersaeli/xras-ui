@@ -1,0 +1,56 @@
+.grid {
+  border: 1px solid #cccccc;
+  max-height: 400px;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  overflow: scroll;
+  position: relative;
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 0;
+    position: relative;
+  }
+  th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  th,
+  td {
+    background-color: white;
+    border-bottom: 1px solid #cccccc;
+    border-left: 0 none transparent;
+    border-right: 1px solid #cccccc;
+    border-top: 0 none transparent;
+    &:last-child {
+      border-right: 0 none transparent;
+    }
+    &.important {
+      background-color: #f8f9fa;
+    }
+    &.input {
+      background-color: var(--teal-200);
+    }
+  }
+  .edited td,
+  .edited select {
+    background-color: #faf1d7;
+    &.important {
+      background-color: #fbeeca;
+    }
+  }
+  .disabled td,
+  .disabled select {
+    background-color: #dddddd;
+    &.important {
+      background-color: #cccccc;
+    }
+  }
+  tbody tr:last-child {
+    th,
+    td {
+      border-bottom: 0 none transparent;
+    }
+  }
+}
