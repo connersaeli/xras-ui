@@ -105,7 +105,7 @@ export default function ActionsModal({ requestId, grantNumber }) {
       id: "renewal",
       action: renewalActions.map((action) => [
         action.opportunityName,
-        `${config.renew_request_path(requestId)}?opportunity_id=${
+        `${config.routes.renew_request_path(requestId)}?opportunity_id=${
           action.opportunityId
         }`,
         "post",
