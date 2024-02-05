@@ -367,7 +367,7 @@ const getAuthToken = () =>
 
 export const searchUsers = async (searchText) => {
   const params = new URLSearchParams({ q: searchText });
-  const res = await fetch(`FIXME?${params}`);
+  const res = await fetch(`${config.routes.search_people_path()}?${params}`);
   return (await res.json()).map(
     ({ email, first_name, last_name, username, organization }) => ({
       email,
