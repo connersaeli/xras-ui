@@ -86,7 +86,8 @@ export default function Users({ grantNumber, requestId }) {
           >
             Exchange credits for resources.
           </a>
-        ) : null}
+        ) : null}{" "}
+        Additional users can be added after an exchange is approved.
       </Alert>
     );
   } else if (allInactive) {
