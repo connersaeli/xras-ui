@@ -83,7 +83,10 @@ export default function InfoTip({
       show={show && visible && ready}
       trigger={trigger}
     >
-      <button className="btn bnt-clear border-0">
+      <button
+        className="btn bnt-clear border-0"
+        style={{ backgroundColor: "transparent" }}
+      >
         <i className={`bi bi-${icon}`} />
       </button>
     </OverlayTrigger>

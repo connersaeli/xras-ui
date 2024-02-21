@@ -802,7 +802,6 @@ export const apiSlice = createSlice({
         action.payload.projectsList.sort((a, b) =>
           getSortDate(a.requests[0]) > getSortDate(b.requests[0]) ? -1 : 1
         );
-        console.log(action.payload.projectsList);
         state.username = action.payload.username;
         state.projectsList = action.payload.projectsList.map((project) => {
           const { grantNumber, requests, status, title } = project;
