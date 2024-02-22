@@ -10,6 +10,13 @@ export default defineConfig({
       name: "XrasUi",
       fileName: "xras-ui",
     },
+    rollupOptions: {
+      output: {
+        assetFileNames: (chunkInfo) => {
+          if (chunkInfo.name === "style.css") return "xras-ui.css";
+        },
+      },
+    },
   },
   plugins: [react()],
 });
