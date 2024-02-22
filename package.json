@@ -1,8 +1,19 @@
 {
   "name": "@xras/ui",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "User interface components for XRAS",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/xras-ui.umd.cjs",
+  "module": "./dist/xras-ui.js",
+  "exports": {
+    ".": {
+      "import": "./dist/xras-ui.js",
+      "require": "./dist/xras-ui.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
