@@ -71,7 +71,11 @@ export default function Project({ open = false, grantNumber, title, status }) {
         >
           <h2 className="mb-1 mt-1 text-start">
             <i className={`bi bi-caret-${expanded ? "down" : "right"}-fill`} />{" "}
-            <span className="grant-number">{grantNumber}:</span>{" "}
+            {/^[A-Z]/.test(grantNumber) ? (
+              <>
+                <span className="grant-number">{grantNumber}:</span>{" "}
+              </>
+            ) : null}
             {title || project.title}
           </h2>
         </button>

@@ -18,9 +18,10 @@ const getUserSortKey = (user) =>
 
 const addProject = (
   state,
-  { grantNumber, projectManager, requests, title, users },
+  { grantNumber, projectManager, requestMasterId, requests, title, users },
   projectStatus
 ) => {
+  grantNumber = grantNumber || requestMasterId;
   requests.sort((a, b) => (getSortDate(a) > getSortDate(b) ? -1 : 1));
   const currentRequest = requests.find(
     (request) => request.timeStatus == "current"
@@ -804,7 +805,8 @@ export const apiSlice = createSlice({
         );
         state.username = action.payload.username;
         state.projectsList = action.payload.projectsList.map((project) => {
-          const { grantNumber, requests, status, title } = project;
+          const { grantNumber, requestMasterId, requests, status, title } =
+            project;
           const projectStatus =
             status ||
             (requests &&
@@ -814,7 +816,11 @@ export const apiSlice = createSlice({
                 ? "Inactive"
                 : requests[0].status));
           if (requests) addProject(state, project, projectStatus);
-          return { grantNumber, status: projectStatus, title };
+          return {
+            grantNumber: grantNumber || requestMasterId,
+            status: projectStatus,
+            title,
+          };
         });
         state.projectListLoading = false;
       })
