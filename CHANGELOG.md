@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.1](https://github.com/access-ci-org/xras-ui/compare/v0.1.0...v0.1.1) (2024-03-18)
+
+
+### Bug Fixes
+
+* **projects:** correctly handle multiple incomplete requests ([d53664b](https://github.com/access-ci-org/xras-ui/commit/d53664bb4df6a4aabf734314fd756b70f28e96a9))
+
 ## 0.1.0 (2024-02-22)
 
 
