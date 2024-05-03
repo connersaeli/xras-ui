@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/access-ci-org/xras-ui/compare/v0.1.1...v0.1.2) (2024-05-03)
+
+
+### Features
+
+* **resource-catalog:** migrate components from @xras/resource-catalog ([e2eff72](https://github.com/access-ci-org/xras-ui/commit/e2eff72c451e3f9d3d054340920cd98f8d7cf74e))
+
 ### [0.1.1](https://github.com/access-ci-org/xras-ui/compare/v0.1.0...v0.1.1) (2024-03-18)
 
 
