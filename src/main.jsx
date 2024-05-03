@@ -17,6 +17,9 @@ import PublicationsSelect from "./publications/PublicationsSelect";
 import publicationsConfig from "./publications/helpers/config";
 import { publications_store } from "./publications/helpers/reducers";
 
+import ResourceCatalog from "./resource-catalog/ResourceCatalog";
+import catalogSlice from "./resource-catalog/helpers/catalogSlice";
+
 export function allocationsMap({ target }) {
   ReactDOM.createRoot(target).render(<AllocationsMap />);
 }
@@ -81,6 +84,32 @@ export function publicationsSelect({ target, routes }) {
     <Provider store={publicationsStore()}>
       <PublicationsSelect
         {...JSON.parse(target.dataset.publicationsSelectProps)}
+      />
+    </Provider>
+  );
+}
+
+export function resourceCatalog({
+  target,
+  apiUrl,
+  excludedCategories,
+  excludedFilters,
+  allowedCategories,
+  allowedFilters,
+}) {
+  const store = configureStore({
+    reducer: {
+      resourceCatalog: catalogSlice,
+    },
+  });
+  ReactDOM.createRoot(target).render(
+    <Provider store={store}>
+      <ResourceCatalog
+        apiUrl={apiUrl}
+        excludedCategories={excludedCategories}
+        excludedFilters={excludedFilters}
+        allowedCategories={allowedCategories}
+        allowedFilters={allowedFilters}
       />
     </Provider>
   );
