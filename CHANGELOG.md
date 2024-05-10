@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/access-ci-org/xras-ui/compare/v0.1.2...v0.1.3) (2024-05-10)
+
+
+### Features
+
+* **style:** add support for host sites without Bootstrap 5 ([a38fb96](https://github.com/access-ci-org/xras-ui/commit/a38fb96da7d511dd521cb963893a5756e0c8964c))
+
 ### [0.1.2](https://github.com/access-ci-org/xras-ui/compare/v0.1.1...v0.1.2) (2024-05-03)
 
 
