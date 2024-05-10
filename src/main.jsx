@@ -20,6 +20,36 @@ import { publications_store } from "./publications/helpers/reducers";
 import ResourceCatalog from "./resource-catalog/ResourceCatalog";
 import catalogSlice from "./resource-catalog/helpers/catalogSlice";
 
+export function shadowTarget(
+  host,
+  { bootstrapFonts = true, bootstrapVariables = true } = {}
+) {
+  const shadow = host.attachShadow({ mode: "open" });
+  const bsOuter = document.createElement("div");
+  const bsInner = document.createElement("div");
+  const target = document.createElement("div");
+  const bsStyle = document.createElement("link");
+  const uiStyle = document.createElement("link");
+  const baseUrl = import.meta.url.replace(/\/[^/]+$/, "");
+
+  bsStyle.rel = "stylesheet";
+  bsStyle.href = `${baseUrl}/bootstrap.css`;
+  uiStyle.rel = "stylesheet";
+  uiStyle.href = `${baseUrl}/xras-ui.css`;
+
+  bsInner.appendChild(target);
+  bsOuter.appendChild(bsInner);
+  shadow.appendChild(bsOuter);
+  shadow.appendChild(bsStyle);
+  shadow.appendChild(uiStyle);
+
+  bsOuter.classList.add("bootstrap");
+  if (bootstrapVariables) bsInner.classList.add("bootstrap-variables");
+  if (bootstrapFonts) bsInner.classList.add("bootstrap-fonts");
+
+  return target;
+}
+
 export function allocationsMap({ target }) {
   ReactDOM.createRoot(target).render(<AllocationsMap />);
 }
