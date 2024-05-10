@@ -16,8 +16,11 @@
       <div id="projects-react"></div>
     </div>
     <script type="module">
-      import { renderProjects } from "/src/main.jsx";
-      renderProjects(document.getElementById("projects-react"), "testuser1");
+      import { projects } from "/src/main.jsx";
+      projects(
+        { target: document.getElementById("projects-react") },
+        "testuser1"
+      );
     </script>
   </body>
 </html>
