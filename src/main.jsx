@@ -22,7 +22,7 @@ import catalogSlice from "./resource-catalog/helpers/catalogSlice";
 
 export function shadowTarget(
   host,
-  { bootstrapFonts = true, bootstrapVariables = true } = {}
+  { bootstrapFonts = true, bootstrapVariables = true, access = false } = {}
 ) {
   const shadow = host.attachShadow({ mode: "open" });
   const bsOuter = document.createElement("div");
@@ -30,18 +30,22 @@ export function shadowTarget(
   const target = document.createElement("div");
   const bsStyle = document.createElement("link");
   const uiStyle = document.createElement("link");
+  const accessStyle = document.createElement("link");
   const baseUrl = import.meta.url.replace(/\/[^/]+$/, "");
 
   bsStyle.rel = "stylesheet";
   bsStyle.href = `${baseUrl}/bootstrap.css`;
   uiStyle.rel = "stylesheet";
   uiStyle.href = `${baseUrl}/xras-ui.css`;
+  accessStyle.rel = "stylesheet";
+  accessStyle.href = `${baseUrl}/access.css`;
 
   bsInner.appendChild(target);
   bsOuter.appendChild(bsInner);
-  shadow.appendChild(bsOuter);
   shadow.appendChild(bsStyle);
   shadow.appendChild(uiStyle);
+  shadow.appendChild(accessStyle);
+  shadow.appendChild(bsOuter);
 
   bsOuter.classList.add("bootstrap");
   if (bootstrapVariables) bsInner.classList.add("bootstrap-variables");
@@ -121,11 +125,8 @@ export function publicationsSelect({ target, routes }) {
 
 export function resourceCatalog({
   target,
-  apiUrl,
-  excludedCategories,
-  excludedFilters,
-  allowedCategories,
-  allowedFilters,
+  catalogSources,
+  onRamps
 }) {
   const store = configureStore({
     reducer: {
@@ -135,11 +136,8 @@ export function resourceCatalog({
   ReactDOM.createRoot(target).render(
     <Provider store={store}>
       <ResourceCatalog
-        apiUrl={apiUrl}
-        excludedCategories={excludedCategories}
-        excludedFilters={excludedFilters}
-        allowedCategories={allowedCategories}
-        allowedFilters={allowedFilters}
+        catalogSources={catalogSources}
+        onRamps={onRamps}
       />
     </Provider>
   );
