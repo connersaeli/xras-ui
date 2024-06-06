@@ -58,77 +58,80 @@ export const catalogSlice = createSlice({
       const apiResources = payload.data;
       const excludedCategories = payload.params.excludedCategories;
       const excludedFilters = payload.params.excludedFilters;
+      const excludedResources = payload.params.excludedResources;
       const allowedCategories = payload.params.allowedCategories;
       const allowedFilters = payload.params.allowedFilters;
 
       const resources = [];
       const categories = {};
-      apiResources.forEach((r) => {
-        const feature_list = [];
+      apiResources
+        .filter((r) => !excludedResources.includes(r.resourceName))
+        .forEach((r) => {
+          const feature_list = [];
 
-        r.featureCategories
-          .filter((f) => f.categoryIsFilter)
-          .forEach((category) => {
-            const categoryId = category.categoryId;
-
-            if (
-              !categories[categoryId] &&
-              useFilter(
-                allowedCategories,
-                excludedCategories,
-                category.categoryName
-              )
-            ) {
-              categories[categoryId] = {
-                categoryId: categoryId,
-                categoryName: category.categoryName,
-                categoryDescription: category.categoryDescription,
-                features: {},
-              };
-            }
-
-            category.features.forEach((feat) => {
-              const feature = {
-                featureId: feat.featureId,
-                name: feat.name,
-                description: feat.description,
-                categoryId: categoryId,
-                selected: false,
-              };
-
-              const filterIncluded = useFilter(
-                allowedFilters,
-                excludedFilters,
-                feature.name
-              );
-              if (filterIncluded) feature_list.push(feature);
+          r.featureCategories
+            .filter((f) => f.categoryIsFilter)
+            .forEach((category) => {
+              const categoryId = category.categoryId;
 
               if (
-                categories[categoryId] &&
-                filterIncluded &&
-                !categories[categoryId].features[feat.featureId]
+                !categories[categoryId] &&
+                useFilter(
+                  allowedCategories,
+                  excludedCategories,
+                  category.categoryName
+                )
               ) {
-                categories[categoryId].features[feat.featureId] = feature;
+                categories[categoryId] = {
+                  categoryId: categoryId,
+                  categoryName: category.categoryName,
+                  categoryDescription: category.categoryDescription,
+                  features: {},
+                };
               }
+
+              category.features.forEach((feat) => {
+                const feature = {
+                  featureId: feat.featureId,
+                  name: feat.name,
+                  description: feat.description,
+                  categoryId: categoryId,
+                  selected: false,
+                };
+
+                const filterIncluded = useFilter(
+                  allowedFilters,
+                  excludedFilters,
+                  feature.name
+                );
+                if (filterIncluded) feature_list.push(feature);
+
+                if (
+                  categories[categoryId] &&
+                  filterIncluded &&
+                  !categories[categoryId].features[feat.featureId]
+                ) {
+                  categories[categoryId].features[feat.featureId] = feature;
+                }
+              });
             });
-          });
 
-        const resource = {
-          resourceName: r.resourceName,
-          resourceId: r.resourceId,
-          resourceType: r.resourceType,
-          organization: r.organization,
-          units: r.units,
-          userGuideUrl: r.userGuideUrl,
-          resourceDescription: r.resourceDescription,
-          description: r.description,
-          recommendedUse: r.recommendedUse,
-          features: feature_list.map((f) => f.name).sort((a, b) => a > b),
-          featureIds: feature_list.map((f) => f.featureId),
-        };
+          const resource = {
+            resourceName: r.resourceName,
+            resourceId: r.resourceId,
+            resourceType: r.resourceType,
+            organization: r.organization,
+            units: r.units,
+            userGuideUrl: r.userGuideUrl,
+            resourceDescription: r.resourceDescription,
+            description: r.description,
+            recommendedUse: r.recommendedUse,
+            features: feature_list.map((f) => f.name).sort((a, b) => a > b),
+            featureIds: feature_list.map((f) => f.featureId),
+          };
 
-        resources.push(resource);
-      });
+          resources.push(resource);
+        });
 
       for (const categoryId in categories) {
         const category = categories[categoryId];

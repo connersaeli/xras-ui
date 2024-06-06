@@ -124,6 +124,7 @@ export function resourceCatalog({
   apiUrl,
   excludedCategories,
   excludedFilters,
+  excludedResources,
   allowedCategories,
   allowedFilters,
 }) {
@@ -138,6 +139,7 @@ export function resourceCatalog({
         apiUrl={apiUrl}
         excludedCategories={excludedCategories}
         excludedFilters={excludedFilters}
+        excludedResources={excludedResources}
         allowedCategories={allowedCategories}
         allowedFilters={allowedFilters}
       />

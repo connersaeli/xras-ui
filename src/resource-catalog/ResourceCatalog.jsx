@@ -13,6 +13,7 @@ const ResourceCatalog = ({
   apiUrl,
   excludedCategories = [],
   excludedFilters = [],
+  excludedResources = [],
   allowedCategories = [],
   allowedFilters = [],
 }) => {
@@ -26,6 +27,7 @@ const ResourceCatalog = ({
         apiUrl,
         excludedCategories,
         excludedFilters,
+        excludedResources,
         allowedCategories,
         allowedFilters,
       })
