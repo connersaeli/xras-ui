@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/access-ci-org/xras-ui/compare/v0.1.3...v0.1.4) (2024-06-10)
+
+
+### Features
+
+* **resource-catalog:** port resource filtering feature ([24ea301](https://github.com/access-ci-org/xras-ui/commit/24ea301eb7ae53ae52d0ebe2ef718db03f1d1557))
+
 ### [0.1.3](https://github.com/access-ci-org/xras-ui/compare/v0.1.2...v0.1.3) (2024-05-10)
 
 
