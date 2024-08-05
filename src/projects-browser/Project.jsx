@@ -97,7 +97,7 @@ const Project = ({ project }) => {
               Abstract
             </Accordion.Header>
             <Accordion.Body>
-              <div className={style.abstract}>{ project.abstract }</div>
+              <div style={{ whiteSpace: "pre-wrap", padding: "5px" }}>{ project.abstract }</div>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
