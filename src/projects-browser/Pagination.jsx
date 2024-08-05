@@ -18,6 +18,7 @@ const Pagination = () => {
     (value, index) => index
   );
   const pageBreak = 10;
+  const linkStyle = { width: "50px", textAlign: "center" };
 
   useEffect(() => {
     buildPaginator();
@@ -92,7 +93,7 @@ const Pagination = () => {
     if (page == "spacer") {
       return (
         <li className="page-item disabled">
-          <span className={`page-link ${style.link}`}>. . .</span>
+          <span className={`page-link`} style={linkStyle}>. . .</span>
         </li>
       );
     }
@@ -100,7 +101,7 @@ const Pagination = () => {
     if (page == "current") {
       return (
         <li className="page-item active" aria-current="page">
-          <span className={`page-link ${style.link}`}>{label}</span>
+          <span className={`page-link`} style={linkStyle}>{label}</span>
         </li>
       );
     }
@@ -108,7 +109,8 @@ const Pagination = () => {
     return (
       <li className="page-item">
         <button
-          className={`page-link ${style.link}`}
+          className={`page-link`}
+          style={linkStyle}
           onClick={() => handleGetPage(page)}
         >
           {label}
@@ -121,8 +123,8 @@ const Pagination = () => {
     return (
       <li className="page-item">
         <select
-          className={`page-link ${style.link}`}
-          style={{ height: "100%" }}
+          className={`page-link`}
+          style={{ ...linkStyle, height: "100%" }}
           value={manualPage}
           onChange={(e) => goToPage(e.target.value)}
         >
@@ -147,12 +149,13 @@ const Pagination = () => {
             }`}
           >
             <button
-              className={`page-link ${style.link}`}
+              className={`page-link`}
+              style={{ width: "50px", textAlign: "center" }}
               onClick={() => handleGetPage(pageData.current_page - 1)}
               disabled={pageData.current_page == 1}
               aria-label="Previous Page Button"
             >
-              <i className="bi bi-chevron-left"></i>
+              &lt;
             </button>
           </li>
           {pageLinks.map((link, index) => (
@@ -169,12 +172,13 @@ const Pagination = () => {
             }`}
           >
             <button
-              className={`page-link ${style.link}`}
+              className={`page-link`}
+              style={linkStyle}
               onClick={() => handleGetPage(pageData.current_page + 1)}
               disabled={pageData.current_page == pageData.last_page}
               aria-label="Next Page Button"
             >
-              <i className="bi bi-chevron-right"></i>
+              &gt;
             </button>
           </li>
         </ul>

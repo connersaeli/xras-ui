@@ -26,6 +26,11 @@ const Filters = () => {
   const selectRef = useRef();
   const [orgValue, setOrgValue] = useState(null);
   const [filtered, setFiltered] = useState(false);
+  const fosSelectListStyle = {
+    height: "200px",
+    overflowX: "auto",
+    padding: "2px",
+  }
 
   const handleFilterChange = (e) => {
     dispatch(updateFilter({ name: e.target.name, value: e.target.value }));
@@ -67,7 +72,7 @@ const Filters = () => {
       <div className="col">
         <h3 className="mb-2">Filters</h3>
         <h5 className="mb-1">Field of Science</h5>
-        <div className={`${style["fos-select-list"]} border mb-3`}>
+        <div className={`border mb-3`} style={fosSelectListStyle}>
           <div className="form-check">
             <input
               className="form-check-input"
