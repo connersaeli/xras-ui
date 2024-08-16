@@ -86,7 +86,7 @@ export const savePublication = () => async (dispatch, getState) => {
   const { formValid, missingFields } = validateForm(
     publication,
     ["title", "publication_year", "publication_month"],
-    ["first_name", "last_name", "affiliation"]
+    ["first_name", "last_name"]
   );
 
   if (!formValid) {
