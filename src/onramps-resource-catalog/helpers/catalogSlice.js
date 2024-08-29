@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import sanitizeHtml from "sanitize-html";
 
 const initialState = {
   catalogs: {},
@@ -35,8 +34,6 @@ export const getResources = createAsyncThunk(
         excludedResources: ["ACCESS Credits"],
       });
     }
-
-    sources.forEach((c) => c.description = sanitizeHtml(c.description));
 
     const apiData = await Promise.all(sources.map( async (src) => {
       const response = await fetch(src.apiUrl);
@@ -190,9 +187,6 @@ const formatResourceFeatures = (catalog, resource, categories) => {
     const formattedResource = {
       ...resource,
       resourceName: resource.resourceName.trim(),
-      resourceDescription: sanitizeHtml(resource.resourceDescription),
-      recommendedUse: sanitizeHtml(resource.recommendedUse),
-      description: sanitizeHtml(resource.recommendedUse),
       features: featureNames,
       featureIds: featureList.map((f) => f.featureId),
     };

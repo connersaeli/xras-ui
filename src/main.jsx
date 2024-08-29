@@ -17,8 +17,8 @@ import PublicationsSelect from "./publications/PublicationsSelect";
 import publicationsConfig from "./publications/helpers/config";
 import { publications_store } from "./publications/helpers/reducers";
 
-import ResourceCatalog from "./resource-catalog/ResourceCatalog";
-import catalogSlice from "./resource-catalog/helpers/catalogSlice";
+import OnRampsResourceCatalog from "./onramps-resource-catalog/ResourceCatalog";
+import catalogSlice from "./onramps-resource-catalog/helpers/catalogSlice";
 
 export function shadowTarget(
   host,
@@ -136,7 +136,7 @@ export function resourceCatalog({ target, catalogSources, onRamps }) {
   });
   ReactDOM.createRoot(target).render(
     <Provider store={store}>
-      <ResourceCatalog catalogSources={catalogSources} onRamps={onRamps} />
+      <OnRampsResourceCatalog catalogSources={catalogSources} onRamps={onRamps} />
     </Provider>
   );
 }
