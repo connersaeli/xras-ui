@@ -17,35 +17,44 @@ import PublicationsSelect from "./publications/PublicationsSelect";
 import publicationsConfig from "./publications/helpers/config";
 import { publications_store } from "./publications/helpers/reducers";
 
-import ResourceCatalog from "./resource-catalog/ResourceCatalog";
-import catalogSlice from "./resource-catalog/helpers/catalogSlice";
+import OnRampsResourceCatalog from "./onramps-resource-catalog/ResourceCatalog";
+import catalogSlice from "./onramps-resource-catalog/helpers/catalogSlice";
 
 export function shadowTarget(
   host,
-  { bootstrapFonts = true, bootstrapVariables = true } = {}
+  { bootstrapFonts = true, bootstrapVariables = true, access = false } = {}
 ) {
   const shadow = host.attachShadow({ mode: "open" });
   const bsOuter = document.createElement("div");
+  const bsMiddle = document.createElement("div");
   const bsInner = document.createElement("div");
   const target = document.createElement("div");
   const bsStyle = document.createElement("link");
   const uiStyle = document.createElement("link");
+  const accessStyle = document.createElement("link");
   const baseUrl = import.meta.url.replace(/\/[^/]+$/, "");
 
   bsStyle.rel = "stylesheet";
   bsStyle.href = `${baseUrl}/bootstrap.css`;
   uiStyle.rel = "stylesheet";
   uiStyle.href = `${baseUrl}/xras-ui.css`;
+  accessStyle.rel = "stylesheet";
+  accessStyle.href = `${baseUrl}/access.css`;
 
   bsInner.appendChild(target);
-  bsOuter.appendChild(bsInner);
-  shadow.appendChild(bsOuter);
+  bsMiddle.appendChild(bsInner);
+  bsOuter.appendChild(bsMiddle);
   shadow.appendChild(bsStyle);
   shadow.appendChild(uiStyle);
+  shadow.appendChild(accessStyle);
+  shadow.appendChild(bsOuter);
 
   bsOuter.classList.add("bootstrap");
-  if (bootstrapVariables) bsInner.classList.add("bootstrap-variables");
-  if (bootstrapFonts) bsInner.classList.add("bootstrap-fonts");
+  if (bootstrapVariables) bsMiddle.classList.add("bootstrap-variables");
+  if (bootstrapFonts) {
+    bsInner.classList.add("bootstrap-fonts");
+    bsInner.setAttribute("data-bs-theme", "light");
+  }
 
   return target;
 }
@@ -116,6 +125,7 @@ export function publicationsSelect({ target, routes }) {
   );
 }
 
+<<<<<<< HEAD
 export function resourceCatalog({
   target,
   apiUrl,
@@ -125,6 +135,9 @@ export function resourceCatalog({
   allowedCategories,
   allowedFilters,
 }) {
+=======
+export function resourceCatalog({ target, catalogSources, onRamps }) {
+>>>>>>> resourceCatalogUpdates
   const store = configureStore({
     reducer: {
       resourceCatalog: catalogSlice,
@@ -132,6 +145,7 @@ export function resourceCatalog({
   });
   ReactDOM.createRoot(target).render(
     <Provider store={store}>
+<<<<<<< HEAD
       <ResourceCatalog
         apiUrl={apiUrl}
         excludedCategories={excludedCategories}
@@ -140,6 +154,9 @@ export function resourceCatalog({
         allowedCategories={allowedCategories}
         allowedFilters={allowedFilters}
       />
+=======
+      <OnRampsResourceCatalog catalogSources={catalogSources} onRamps={onRamps} />
+>>>>>>> resourceCatalogUpdates
     </Provider>
   );
 }
