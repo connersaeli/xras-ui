@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/access-ci-org/xras-ui/compare/v0.1.4...v0.2.0) (2024-09-18)
+
+
+### Features
+
+* On-Ramps Resource Catalog now ready for sharing ([3e8f0f4](https://github.com/access-ci-org/xras-ui/commit/3e8f0f497b9e8b56bdd3592e8b31bca5f7b77634))
+* **projects-browser:** added ability to filter by resource. ([7a25118](https://github.com/access-ci-org/xras-ui/commit/7a251184cf3469d2a653b05cad8e86c4494e06a7))
+* **publications:** Publications author affiliation is now optional ([4b0ee76](https://github.com/access-ci-org/xras-ui/commit/4b0ee764d9c418fb591c352f86ebad7643a3cec2))
+
+
+### Bug Fixes
+
+* Fixed the index.html page to resolve merge conflict and bumped the version number ([93c7607](https://github.com/access-ci-org/xras-ui/commit/93c7607a15990453affe2319b117438f5c434044))
+* **style:** make styles work with shadow DOM ([ec7fb14](https://github.com/access-ci-org/xras-ui/commit/ec7fb14b60c799b4dbafca3532fe58f15f84ae71))
+
 ### [0.1.4](https://github.com/access-ci-org/xras-ui/compare/v0.1.3...v0.1.4) (2024-06-10)
 
 
