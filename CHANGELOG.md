@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.1](https://github.com/access-ci-org/xras-ui/compare/v0.2.0...v0.2.1) (2024-09-18)
+
+
+### Bug Fixes
+
+* Fixed more merge issues ([7ce8f8c](https://github.com/access-ci-org/xras-ui/commit/7ce8f8c6a5bdf0dfc741759b3bf483e281c88b57))
+
 ## [0.2.0](https://github.com/access-ci-org/xras-ui/compare/v0.1.4...v0.2.0) (2024-09-18)
 
 
