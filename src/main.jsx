@@ -18,7 +18,10 @@ import publicationsConfig from "./publications/helpers/config";
 import { publications_store } from "./publications/helpers/reducers";
 
 import OnRampsResourceCatalog from "./onramps-resource-catalog/ResourceCatalog";
-import catalogSlice from "./onramps-resource-catalog/helpers/catalogSlice";
+import onRampsCatalogSlice from "./onramps-resource-catalog/helpers/catalogSlice";
+
+import ResourceCatalog from "./resource-catalog/ResourceCatalog";
+import catalogSlice from "./resource-catalog/helpers/catalogSlice";
 
 export function shadowTarget(
   host,
@@ -125,7 +128,28 @@ export function publicationsSelect({ target, routes }) {
   );
 }
 
-export function resourceCatalog({ target, catalogSources, onRamps }) {
+export function onRampsResourceCatalog({ target, catalogSources, onRamps }) {
+  const store = configureStore({
+    reducer: {
+      resourceCatalog: onRampsCatalogSlice,
+    },
+  });
+  ReactDOM.createRoot(target).render(
+    <Provider store={store}>
+      <OnRampsResourceCatalog catalogSources={catalogSources} onRamps={onRamps} />
+    </Provider>
+  );
+}
+
+export function resourceCatalog({
+  target,
+  apiUrl,
+  excludedCategories,
+  excludedFilters,
+  excludedResources,
+  allowedCategories,
+  allowedFilters,
+}) {
   const store = configureStore({
     reducer: {
       resourceCatalog: catalogSlice,
@@ -133,7 +157,14 @@ export function resourceCatalog({ target, catalogSources, onRamps }) {
   });
   ReactDOM.createRoot(target).render(
     <Provider store={store}>
-      <OnRampsResourceCatalog catalogSources={catalogSources} onRamps={onRamps} />
+      <ResourceCatalog
+        apiUrl={apiUrl}
+        excludedCategories={excludedCategories}
+        excludedFilters={excludedFilters}
+        excludedResources={excludedResources}
+        allowedCategories={allowedCategories}
+        allowedFilters={allowedFilters}
+      />
     </Provider>
   );
 }

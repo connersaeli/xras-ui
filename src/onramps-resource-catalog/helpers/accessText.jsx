@@ -1,8 +1,10 @@
+const baseUrl = import.meta.url.replace(/\/[^/]+$/, "");
+
 export const accessText = (
   <>
     <div className="row">
       <div className="col d-flex">
-        <img alt="Access Logo" style={{ height: "75px" }} src="/access_logo.png" />
+        <img alt="Access Logo" style={{ height: "75px" }} src={`${baseUrl}/access_logo.png`} />
       </div>
     </div>
     <div className="row">
