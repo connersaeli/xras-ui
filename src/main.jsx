@@ -125,19 +125,7 @@ export function publicationsSelect({ target, routes }) {
   );
 }
 
-<<<<<<< HEAD
-export function resourceCatalog({
-  target,
-  apiUrl,
-  excludedCategories,
-  excludedFilters,
-  excludedResources,
-  allowedCategories,
-  allowedFilters,
-}) {
-=======
 export function resourceCatalog({ target, catalogSources, onRamps }) {
->>>>>>> resourceCatalogUpdates
   const store = configureStore({
     reducer: {
       resourceCatalog: catalogSlice,
@@ -145,18 +133,7 @@ export function resourceCatalog({ target, catalogSources, onRamps }) {
   });
   ReactDOM.createRoot(target).render(
     <Provider store={store}>
-<<<<<<< HEAD
-      <ResourceCatalog
-        apiUrl={apiUrl}
-        excludedCategories={excludedCategories}
-        excludedFilters={excludedFilters}
-        excludedResources={excludedResources}
-        allowedCategories={allowedCategories}
-        allowedFilters={allowedFilters}
-      />
-=======
       <OnRampsResourceCatalog catalogSources={catalogSources} onRamps={onRamps} />
->>>>>>> resourceCatalogUpdates
     </Provider>
   );
 }
