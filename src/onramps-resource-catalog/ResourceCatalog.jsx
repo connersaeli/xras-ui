@@ -6,14 +6,16 @@ import {
   selectHasErrors,
   selectResourcesLoaded,
 } from "./helpers/catalogSlice";
-import { accessText } from "./helpers/accessText";
+
 import ResourceList from "./ResourceList";
 import LoadingSpinner from "../shared/LoadingSpinner";
+import AccessHeader from "./AccessHeader";
 import styles from "./ResourceCatalog.module.scss";
 
 const ResourceCatalog = ({
   catalogSources = [],
-  onRamps = false
+  onRamps = false,
+  baseUrl
 }) => {
   const dispatch = useDispatch();
   const resourcesLoaded = useSelector(selectResourcesLoaded);
@@ -66,7 +68,7 @@ const ResourceCatalog = ({
 
   return (
     <div className={`container mt-3 ${styles.access}`}>
-      { onRamps ? accessText : ''}
+      { onRamps ? <AccessHeader baseUrl={baseUrl} /> : ''}
       { renderCatalogDescriptions() }
       <div className="row">
         <div className="col">

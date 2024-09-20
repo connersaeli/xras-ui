@@ -128,7 +128,7 @@ export function publicationsSelect({ target, routes }) {
   );
 }
 
-export function onRampsResourceCatalog({ target, catalogSources, onRamps }) {
+export function onRampsResourceCatalog({ target, catalogSources, onRamps, baseUrl }) {
   const store = configureStore({
     reducer: {
       resourceCatalog: onRampsCatalogSlice,
@@ -136,7 +136,7 @@ export function onRampsResourceCatalog({ target, catalogSources, onRamps }) {
   });
   ReactDOM.createRoot(target).render(
     <Provider store={store}>
-      <OnRampsResourceCatalog catalogSources={catalogSources} onRamps={onRamps} />
+      <OnRampsResourceCatalog catalogSources={catalogSources} onRamps={onRamps} baseUrl={baseUrl} />
     </Provider>
   );
 }

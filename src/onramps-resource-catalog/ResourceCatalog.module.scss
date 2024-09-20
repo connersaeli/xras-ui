@@ -44,3 +44,14 @@ $warning: #ef7537;
   padding: 0;
   cursor: pointer;
 }
+
+.btnSecondary {
+	color: #000 !important;
+	background-color: #fec42d !important;
+	border-color: #fec42d !important;
+}
+
+.btnSecondary:hover{
+  background-color: #fecd4d !important;
+	border-color: #feca42 !important;
+}
