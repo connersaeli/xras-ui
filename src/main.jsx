@@ -25,7 +25,7 @@ import catalogSlice from "./resource-catalog/helpers/catalogSlice";
 
 export function shadowTarget(
   host,
-  { bootstrapFonts = true, bootstrapVariables = true, access = false } = {}
+  { bootstrapFonts = true, bootstrapVariables = true, access = false, baseUrl = null } = {}
 ) {
   const shadow = host.attachShadow({ mode: "open" });
   const bsOuter = document.createElement("div");
@@ -35,7 +35,7 @@ export function shadowTarget(
   const bsStyle = document.createElement("link");
   const uiStyle = document.createElement("link");
   const accessStyle = document.createElement("link");
-  const baseUrl = import.meta.url.replace(/\/[^/]+$/, "");
+  baseUrl = baseUrl == null ? import.meta.url.replace(/\/[^/]+$/, "") : baseUrl;
 
   bsStyle.rel = "stylesheet";
   bsStyle.href = `${baseUrl}/bootstrap.css`;
