@@ -65,7 +65,6 @@ export default function OverviewResources({ requestId, grantNumber }) {
     {
       key: "used",
       name: "Balance",
-      class: "position-relative",
       format: (used, row) => {
         if (row.isBoolean) return formatBoolean(row.allocated);
         const balance = row.allocated - used;
